@@ -61,7 +61,7 @@ def get_chunk_times(in_filename, silence_threshold, silence_duration, start_time
         ) + ['-nostats'],  # FIXME: use .nostats() once it's implemented in ffmpeg-python.
         stderr=subprocess.PIPE
     )
-    output = remove_non_ascii(p.communicate()[1].decode('utf-8'))
+    output = remove_non_ascii(p.communicate()[1]).decode('utf-8')
     if p.returncode != 0:
         sys.stderr.write(output)
         sys.exit(1)
